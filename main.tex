@@ -1,31 +1,26 @@
 \documentclass[12pt,a4paper]{article}
 
-% standard incantations
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage[english]{babel}
-\usepackage{parskip}
-\usepackage{color,soul} % \hl
-
-% clickable links in the PDF
-\usepackage[colorlinks]{hyperref}
-
-% acronyms
-% \usepackage{acronym} 
-% \input{acronyms}
-
-\usepackage[toc,section=section]{glossaries}
-\makeglossaries
-\input{acronyms}
-
-%Includes "References" in the table of contents
 \usepackage[nottoc]{tocbibind}
-% \usepackage{hyperref}
-\usepackage[colorlinks]{hyperref}
 
-%Import the natbib package and sets a bibliography style
+% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{color,soul} % hl
+
+\usepackage{amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage{placeins} % FloatBarrier
+
+\usepackage[a4paper]{geometry} % textwidth 418pt (14cm) instead of 345pt (12...cm)
+\usepackage{parskip} % Sets page size and margins
+
+\usepackage[colorlinks=true,urlcolor=green,citecolor=red,linkcolor=blue,bookmarks=true]{hyperref}
+
+% package used by \citep and \citet
 \usepackage{natbib}
+% \usepackage{biblatex} % citetitle
 
 %Title and author
 \title{My bibliography}
@@ -43,7 +38,34 @@
 %------------- START TEXT -------------%
 \section{Hindcast and Dynamical Downscaling }
 
-\citet{Zagar2006}
+\subsection{\cite{Zagar2006}}
+
+Title: Validation of mesoscale low-level winds obtained by dynamical downscaling of ERA40over complex terrain
+ 
+There is enhanced spatial variability due to complex terrain and not just synoptic forcing, and temporal variability enhanced through thermal circulations (valley and slope, sea breezes) 
+
+"Downscaling introduces new scales, both spatial and temporal."
+
+"Dynamical downscaling is a tool that allows for a physically consistent adjustment to new higher resolution terrain, attempting to resolve sub-diurnal variations caused by local features."
+
+\subsection{\cite{Gomez-Navarro2015}}
+
+Title:  Sensitivity of the WRF model to PBL parametrisations and nesting techniques: Evaluation of windstorms over complex terrain
+
+"Surface Wind in complex terrain is difficult to realistically model at coarse resolution and at the same time it's hard to extrapolate local observations onto regular grids."
+
+"Dynamical downscaling is a method that uses RCMs driven at the boundaries and initial state by GCMs but with better representation of local features such as terrain, coastline, land use, soil moisture"
+
+It's currently one of the most cost-effective methods to improve resolution of a coarse global dataset because it's run on a limited area and takes advantage of the observations already assimilated in the GCMs
+
+\subsection{\cite{Castro2005}}
+
+Title: Dynamical downscaling:Assessment of value retained and added using the Regional Atmopsheric Model-ing System (RAMS)
+
+"the utility of the RCM, or value added, is to resolve the smaller-scale features which have a greater dependence on the surface boundary", i.e., "the surface boundary forcing is the dominant factor in generating atmospheric variability for small-scale features and that it exerts greater control on the RCM solution as the influence of lateral boundary conditions diminish."
+
+Hindcast simulations are a particular case of dynamical downscaling where the RCM is driven by coarser reanalysis products, taking advantage of their reliability and assimilated data, but improving simulation of localized features. \cite{Castro2005}?
+
 
 \subsection{\cite{Garcia-Diez2015}}
 \cite{Garcia-Diez2015} compares \gls{WRF} 8~km from \gls{GFS}, ERA-Interim and NCEP-NCA. They show that "added value of wind downscaling depends on the geographical complexity of the area under study" (e.g. it's easier to add value to coarse resolutions in complex terrain than in flat, or in coast line than offshore for a marine dataset). 
@@ -82,7 +104,18 @@ They ran 36~h daily (12z) simulations, with 12~h spinup, and provide references 
 %Print the glossary
 \printglossaries
 %------------- BIBLIO -------------%
-% \bibliographystyle{chicago}
-\bibliographystyle{styles/agufull}
-\bibliography{mendeley_v2}
+% \clearpage
+\bibliographystyle{chicago}
+\bibliography{mendeley_v2.bib}
+\label{sec:references}
+% %% command                        & example result
+% %% \citet{jones90}|               & Jones et al. (1990)
+% %% \citep{jones90}|               & (Jones et al., 1990)
+% %% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+% %% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+% %% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+% %% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+% %% \citeauthor{jones90}|          & Jones et al.
+% %% \citeyear{jones90}|            & 1990
+
 \end{document}
