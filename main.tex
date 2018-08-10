@@ -1,0 +1,88 @@
+\documentclass[12pt,a4paper]{article}
+
+% standard incantations
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{parskip}
+\usepackage{color,soul} % \hl
+
+% clickable links in the PDF
+\usepackage[colorlinks]{hyperref}
+
+% acronyms
+% \usepackage{acronym} 
+% \input{acronyms}
+
+\usepackage[toc,section=section]{glossaries}
+\makeglossaries
+\input{acronyms}
+
+%Includes "References" in the table of contents
+\usepackage[nottoc]{tocbibind}
+% \usepackage{hyperref}
+\usepackage[colorlinks]{hyperref}
+
+%Import the natbib package and sets a bibliography style
+\usepackage{natbib}
+
+%Title and author
+\title{My bibliography}
+\author{Rosa}
+
+%------------- DEFINITIONS -------------%
+\def\deg{$^\circ$\xspace}
+\def\ms{m s\textsuperscript{-1}\xspace}
+
+%------------- BEGIN -------------%
+\begin{document}
+\maketitle
+\tableofcontents
+
+%------------- START TEXT -------------%
+\section{Hindcast and Dynamical Downscaling }
+
+\citet{Zagar2006}
+
+\subsection{\cite{Garcia-Diez2015}}
+\cite{Garcia-Diez2015} compares \gls{WRF} 8~km from \gls{GFS}, ERA-Interim and NCEP-NCA. They show that "added value of wind downscaling depends on the geographical complexity of the area under study" (e.g. it's easier to add value to coarse resolutions in complex terrain than in flat, or in coast line than offshore for a marine dataset). 
+
+"Results suggest that, as model resolution increases, traditional skill scores tend to saturate. Thus, adding value to high-resolution global models becomes significantly more difficult." They provide reasons such as no data assimilation to reduce spinup period and warm start of soil moisture (i.e. not "cold" start from coarse data every run).
+
+Mention of other marine hindcast studies:
+\begin{itemize}
+\item \hl{Winterfeld et al (2011) and Feser et al (2011)} found added value near coast with satellite measurements and RCM with 1.875 degrees resolution. 
+\item \hl{Winterfield and Weisse (2009)} did this verification with buoy data.
+\item \hl{Menedes et al 2014} did a long-term study and realized that WRF only had value in a few points near the coastline
+\end{itemize}
+
+Skill Scores:
+\begin{itemize}
+\item Traditional skill scores such as RMSE are not the best to assess added value because they are very sensitive to phase errors and as high-resolution produce sharper changes, scores such as RMSE appear to be worse than coarse models. See \hl{Mass et al 2002 BAMS}. 
+\item \hl{Rife and Davis 2005} show different verification methods (\hl{anomaly correlation})
+\item \hl{Howard et al 2012} explored verification with spectral analysis in 3 bands: synoptic, diurnal and semi-diurnal. But they didn't used this in the paper (Garcia..) because only had 6-hour reanalysis data.
+\end{itemize}
+
+Also, they compared with station data (and buoys) because wind is a variable with local features and interpolation is a challenge for areal-representative gridded observations (needs a dense network of stations to be realistic. They used nearest-neighbour interpolation filtering land/ocean mask for coastal stations that \hl{significantly improved coastal stations results}. Overall bias is positive but there are 2 stations with negative bias and they say it's because they are \hl{"windy stations located on capes and surrounded by cliffs, obstacles that are not resolved by the model."}
+
+They also compared different time aggregations to account for the different frequencies of available data: instantaneous 6 hours, averaged 6 hours and daily.
+
+They ran 36~h daily (12z) simulations, with 12~h spinup, and provide references for studies that did the same and provide good results even comparing with hindcasts that used \hl{nudging} such as \hl{Menendez, 2014: Mediterranean} . "This scheme is computationally cheap but sacrifices small-scale realist from slow-varying variables such as soil moisture".  It also says that 6-12h is enough spinup for atmospheric variables.
+
+\cite{Winterfeldt2009} is cited previously.
+
+\subsection{other}
+
+\cite{Horvath2011} downscaled ERA-40 with ALADIN to 8~km and DADA (dynamical adaptation) to 2~km. They found that BIAS for DADA is $1~\%$ of mean wind speed in flat terrain, reaching up to $10~\%$ for complex terrain, mainly because of underestimation of strongest winds. RMSE for DADA is about $12~\%$ for complex terrain. They also made a \hl{spectral decomposition of wind} and verified that cross-mountain winds were better simulated with dynamical adaptation and mixed results for along-mountain winds. Also, the mesoscale model improved energy on smaller scales of motion, namely secondary diurnal and tertiary semidiurnal maxima particularly on the coast, not on the continent, and underestimated less-than-semidiurnal periods.
+
+\cite{vonStorch2017}
+
+
+%Print the glossary
+\printglossaries
+%------------- BIBLIO -------------%
+% \bibliographystyle{chicago}
+\bibliographystyle{styles/agufull}
+\bibliography{mendeley_v2}
+\end{document}
