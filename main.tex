@@ -40,17 +40,18 @@
 
 \subsection{\cite{Zagar2006}}
 
-Title: Validation of mesoscale low-level winds obtained by dynamical downscaling of ERA40over complex terrain
+\textit{Title: Validation of mesoscale low-level winds obtained by dynamical downscaling of ERA40over complex terrain}
  
-There is enhanced spatial variability due to complex terrain and not just synoptic forcing, and temporal variability enhanced through thermal circulations (valley and slope, sea breezes) 
-
 "Downscaling introduces new scales, both spatial and temporal."
 
 "Dynamical downscaling is a tool that allows for a physically consistent adjustment to new higher resolution terrain, attempting to resolve sub-diurnal variations caused by local features."
 
+There is enhanced spatial variability due to complex terrain and not just synoptic forcing, and temporal variability enhanced through thermal circulations (valley and slope, sea breezes) 
+
+
 \subsection{\cite{Gomez-Navarro2015}}
 
-Title:  Sensitivity of the WRF model to PBL parametrisations and nesting techniques: Evaluation of windstorms over complex terrain
+\textit{Title:  Sensitivity of the WRF model to PBL parametrisations and nesting techniques: Evaluation of windstorms over complex terrain}
 
 "Surface Wind in complex terrain is difficult to realistically model at coarse resolution and at the same time it's hard to extrapolate local observations onto regular grids."
 
@@ -60,45 +61,102 @@ It's currently one of the most cost-effective methods to improve resolution of a
 
 \subsection{\cite{Castro2005}}
 
-Title: Dynamical downscaling:Assessment of value retained and added using the Regional Atmopsheric Model-ing System (RAMS)
+\textit{Title: Dynamical downscaling:Assessment of value retained and added using the Regional Atmopsheric Model-ing System (RAMS)}
 
 "the utility of the RCM, or value added, is to resolve the smaller-scale features which have a greater dependence on the surface boundary", i.e., "the surface boundary forcing is the dominant factor in generating atmospheric variability for small-scale features and that it exerts greater control on the RCM solution as the influence of lateral boundary conditions diminish."
 
-Hindcast simulations are a particular case of dynamical downscaling where the RCM is driven by coarser reanalysis products, taking advantage of their reliability and assimilated data, but improving simulation of localized features. \cite{Castro2005}?
+Hindcast simulations are a particular case of dynamical downscaling where the RCM is driven by coarser reanalysis products, taking advantage of their reliability and assimilated data, but improving simulation of localized features.
 
+\subsection{\cite{Garcia-Diez2015} PRINTED*}
 
-\subsection{\cite{Garcia-Diez2015}}
-\cite{Garcia-Diez2015} compares \gls{WRF} 8~km from \gls{GFS}, ERA-Interim and NCEP-NCA. They show that "added value of wind downscaling depends on the geographical complexity of the area under study" (e.g. it's easier to add value to coarse resolutions in complex terrain than in flat, or in coast line than offshore for a marine dataset). 
+\textit{Title: Assessing and Improving the Local Added Value of WRF for Wind Downscaling}
 
-"Results suggest that, as model resolution increases, traditional skill scores tend to saturate. Thus, adding value to high-resolution global models becomes significantly more difficult." They provide reasons such as no data assimilation to reduce spinup period and warm start of soil moisture (i.e. not "cold" start from coarse data every run).
+Compares WRF 8~km from FGS, ERA-Interim and NCEP-NCA. 
 
-Mention of other marine hindcast studies:
-\begin{itemize}
-\item \hl{Winterfeld et al (2011) and Feser et al (2011)} found added value near coast with satellite measurements and RCM with 1.875 degrees resolution. 
-\item \hl{Winterfield and Weisse (2009)} did this verification with buoy data.
-\item \hl{Menedes et al 2014} did a long-term study and realized that WRF only had value in a few points near the coastline
-\end{itemize}
+"Added value of wind downscaling depends on the geographical complexity of the area under study" 
 
-Skill Scores:
-\begin{itemize}
-\item Traditional skill scores such as RMSE are not the best to assess added value because they are very sensitive to phase errors and as high-resolution produce sharper changes, scores such as RMSE appear to be worse than coarse models. See \hl{Mass et al 2002 BAMS}. 
-\item \hl{Rife and Davis 2005} show different verification methods (\hl{anomaly correlation})
-\item \hl{Howard et al 2012} explored verification with spectral analysis in 3 bands: synoptic, diurnal and semi-diurnal. But they didn't used this in the paper (Garcia..) because only had 6-hour reanalysis data.
-\end{itemize}
+"Results suggest that, as model resolution increases, traditional skill scores tend to saturate. Thus, adding value to high-resolution global models becomes significantly more difficult." 
+
+It's easier to add value to coarse resolutions in complex terrain than in flat, or in coast line than offshore for a marine dataset. 
+
+They provide reasons such as no data assimilation to reduce spinup period and warm start of soil moisture (i.e. not "cold" start from coarse data every run).
+
+\subsubsection{Verfication}
+
+Explored verification with spectral analysis in 3 bands: synoptic, diurnal and semi-diurnal. But they didn't used this in the paper (Garcia..) because only had 6-hour reanalysis data.
 
 Also, they compared with station data (and buoys) because wind is a variable with local features and interpolation is a challenge for areal-representative gridded observations (needs a dense network of stations to be realistic. They used nearest-neighbour interpolation filtering land/ocean mask for coastal stations that \hl{significantly improved coastal stations results}. Overall bias is positive but there are 2 stations with negative bias and they say it's because they are \hl{"windy stations located on capes and surrounded by cliffs, obstacles that are not resolved by the model."}
 
 They also compared different time aggregations to account for the different frequencies of available data: instantaneous 6 hours, averaged 6 hours and daily.
 
-They ran 36~h daily (12z) simulations, with 12~h spinup, and provide references for studies that did the same and provide good results even comparing with hindcasts that used \hl{nudging} such as \hl{Menendez, 2014: Mediterranean} . "This scheme is computationally cheap but sacrifices small-scale realist from slow-varying variables such as soil moisture".  It also says that 6-12h is enough spinup for atmospheric variables.
+They ran 36~h daily (12z) simulations, with 12~h spinup, and provide references for studies that did the same and provide good results even comparing with hindcasts that used \hl{nudging} such as \cite{Menendez2014a}. "This scheme is computationally cheap but sacrifices small-scale realist from slow-varying variables such as soil moisture".  
 
-\cite{Winterfeldt2009} is cited previously.
+It also says that 6-12h is enough spinup for atmospheric variables.
 
-\subsection{other}
 
-\cite{Horvath2011} downscaled ERA-40 with ALADIN to 8~km and DADA (dynamical adaptation) to 2~km. They found that BIAS for DADA is $1~\%$ of mean wind speed in flat terrain, reaching up to $10~\%$ for complex terrain, mainly because of underestimation of strongest winds. RMSE for DADA is about $12~\%$ for complex terrain. They also made a \hl{spectral decomposition of wind} and verified that cross-mountain winds were better simulated with dynamical adaptation and mixed results for along-mountain winds. Also, the mesoscale model improved energy on smaller scales of motion, namely secondary diurnal and tertiary semidiurnal maxima particularly on the coast, not on the continent, and underestimated less-than-semidiurnal periods.
 
-\cite{vonStorch2017}
+
+% --------------- Section --------------- %
+\section{Added value of RCMs}
+
+\subsection{\cite{Winterfeldt2009} MWR}
+
+\textit{Title: Assessment of Value Added for Surface Marine Wind Speed Obtained from Two Regional Climate Models}
+
+Found added value of RCM near coast with verification with buoy data.
+
+\subsection{\cite{Winterfeldt2011} IJC }
+
+\textit{Title: Using QuikSCAT in the addedvalue assessment of dynamically downscaled wind speed}
+
+Found added value of RCM near coast with satellite measurements and RCM with 1.875 degrees resolution. 
+
+\subsection{\cite{Feser2011RegionalExamples} BAMS}
+
+\textit{Title: Regional Climate ModelsAdd Value to Global Model Data: A Review and Selected Examples}
+
+"Regional models can add value, but only for certain variables and locations—particularly those influenced by regional specifics, such as coasts, or mesoscale dynamics, such as polar lows. Therefore, the decision of whether a regional climate model simulation is required depends crucially on the scientific question being addressed."
+
+\subsection{\cite{Horvath2011} JAMC}
+
+\textit{Title: Dynamical downscaling of wind speed in complex terrain prone to bora-type flows}
+
+Downscaled ERA-40 with ALADIN to 8~km and DADA (dynamical adaptation) to 2\~km. 
+
+They found that BIAS for DADA is $1~\%$ of mean wind speed in flat terrain, reaching up to $10~\%$ for complex terrain, mainly because of underestimation of strongest winds. RMSE for DADA is about $12~\%$ for complex terrain. They also made a \hl{spectral decomposition of wind} and verified that cross-mountain winds were better simulated with dynamical adaptation and mixed results for along-mountain winds. Also, the mesoscale model improved energy on smaller scales of motion, namely secondary diurnal and tertiary semidiurnal maxima particularly on the coast, not on the continent, and underestimated less-than-semidiurnal periods.
+
+
+% --------------- Section --------------- %
+\section{Marine Hindcasts}
+
+\subsection{\cite{Menendez2014a} CD PRINTED**}
+
+\textit{Title: High-resolution sea wind hindcasts over the Mediterranean area}
+
+Did a long-term study and realized that WRF only had value in a few points near the coastline
+
+% --------------- Section --------------- %
+\section{Verification:}
+
+\subsection{\cite{Mass2002} BAMS}
+
+\textit{Title: Does increasinghorizontal resolution produce more skillful forecasts?}
+
+Traditional skill scores such as RMSE are not the best to assess added value because they are very sensitive to phase errors and as high-resolution produce sharper changes, scores such as RMSE appear to be worse than coarse models
+
+\subsection{\cite{Rife2005} MWR}
+
+\textit{Title: Verification of Temporal Variations in Mesoscale Numerical Wind Forecasts.}
+
+Show different verification methods (\hl{anomaly correlation})
+
+\subsection{other referenced before:}
+
+\cite{Garcia-Diez2015} 
+
+\cite{Winterfeldt2009}
+
+\cite{Horvath2011} used spectral decomposition of wind
 
 
 %Print the glossary
