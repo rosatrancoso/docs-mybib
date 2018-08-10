@@ -38,6 +38,12 @@
 %------------- START TEXT -------------%
 \section{Hindcast and Dynamical Downscaling }
 
+\subsection{\cite{VonStorch2017} JGRA - PRINT!!!}
+
+"Global reanalyses suffer from inhomogeneities. However, their large-scale componenst are mostly homogeneous. Therefore, the concept of downscaling may be applied to homogeneously complement the large-scale state of the reanalyses with regional detail-wherever the condition of homogeneity of the description of large scales is fulfilled. Technically, this can be done by dynamical downscaling using a regional or global climate model, which's large scales are constrained by \hl{spectral nudging}
+
+"When planning for maintenance of off‐shore structures, when designing ships to withstand environmental stresses, when assessing the risk of very high storm surges (Weisse et al. 2009, 2014, 2015) or the potential of wind energy (Geyer et al. 2015; Li et al. 2016a), of the variability of regional upwelling (Tim et al., 2015), implications on permafrost thermal state, ecology and biochemical cycles through snow cover and depth (Klehmet et al. 2013), realistic descriptions of the regionally detailed weather stream for a sufficiently long time are needed. Such descriptions or analyses cannot be constructed directly from observations simply because of scarcity of observational data. “Long” time series are needed to describe the range of variations, inter‐decadal variability and change. In most cases several decades of data will be needed for such assessments. Another condition for such analyses is that they are homogeneous, i.e., changes across time and space are related to variability in weather patterns and frequencies, and not due to changing instrumentation, time of recording, built and natural environment etc. (e.g., Karl et al. 1993). Using a “frozen” reanalysis model for guiding the analysis is insufficient for guaranteeing homogeneity when the data base is changing in time and space. The latter problem is likely unavoidable."
+
 \subsection{\cite{Zagar2006}}
 
 \textit{Title: Validation of mesoscale low-level winds obtained by dynamical downscaling of ERA40over complex terrain}
@@ -65,7 +71,7 @@ It's currently one of the most cost-effective methods to improve resolution of a
 
 "the utility of the RCM, or value added, is to resolve the smaller-scale features which have a greater dependence on the surface boundary", i.e., "the surface boundary forcing is the dominant factor in generating atmospheric variability for small-scale features and that it exerts greater control on the RCM solution as the influence of lateral boundary conditions diminish."
 
-In \gls{RCM}s the added-value comes from the smaller-scale features introduced by the surfaxe boundary, which is particularly dominant in generating variability as the influence of the lateral conditions diminuish. 
+In RCMs the added-value comes from the smaller-scale features introduced by the surface boundary, which is particularly dominant in generating variability as the influence of the lateral conditions diminish. 
 
 Hindcast simulations are a particular case of dynamical downscaling where the RCM is driven by coarser reanalysis products, taking advantage of their reliability and assimilated data, but improving simulation of localized features.
 
@@ -83,7 +89,7 @@ It's easier to add value to coarse resolutions in complex terrain than in flat, 
 
 They provide reasons such as no data assimilation to reduce spinup period and warm start of soil moisture (i.e. not "cold" start from coarse data every run).
 
-\subsubsection{Verfication}
+\subsubsection{Verification}
 
 Explored verification with spectral analysis in 3 bands: synoptic, diurnal and semi-diurnal. But they didn't used this in the paper (Garcia..) because only had 6-hour reanalysis data.
 
@@ -95,6 +101,29 @@ They ran 36~h daily (12z) simulations, with 12~h spinup, and provide references 
 
 It also says that 6-12h is enough spinup for atmospheric variables.
 
+\subsection{\cite{Vincent2015}}
+
+"Simulations of the regional wind climate, like all regional climate simulations, can be constrained to the large-scale flow by regular and frequent initialization of the model from large-scale forcing, with the first part of each model run being discarded as a 'spinup’ period, during which time the scales resolved in the simulation transition from only those in the large-scale forcing to the full effective resolution of the smaller-scale model. The advantage of this method is that simulations are short enough to prevent the interior of the mesoscale model diverging from the large-scale circulation patterns, but the disadvantages are wasted computational power for the spinup period and discontinuities between individual simulations. Alternatively, the mesoscale simulations can be run continuously without reinitialization, but as shown by Lo et al. (2008) and Bowden et al. (2012, 2013), this can result in drift from the large-scale circulation patterns. It has been shown that these problems can be alleviated by nudging the regional climate model toward its difference from the large-scale forcing, either by nudging in gridpoint space or by nudging in spectral space so that only wavelengths above a certain threshold are nudged."
+
+"Despite the advantages of nudging in the Weather Research and Forecasting (WRF) Model, there is a risk that some of the variability in the regional climate model will be damped by the nudging. For example, Bowden et al. (2012) suggested that nudging could reduce errors at the expense of reducing variability, although..."
+
+"The results suggest that running the model for 10-day periods without reinitialization and with grid or spectral nudging applied to an outer nest is a reasonable configuration for nested regional climate simulations that is comparable to short runs with daily reinitialization discarding the first 12h, although care should be taken near the edges of the domain."
+
+"The long-reinitialization method saves considerable computer resources and results in time series that are more consistent with each other."
+
+"grid nudging causes smoothing of the wind in the 15-km domain at all wavenumbers, both at 1150m AGL and near the surface where nudging is not applied directly, while spectral nudging mainly affects longer wavenumbers. Maps of mesoscale variance show spatial smoothing for both grid and spectral nudging, although the effect is less pronounced for spectral nudging. On the inner, 5-km domain, an indirect smoothing impact of nudging is seen up to 200km inward from the dominant inflow boundary at 1150mAGL,but there is minimal smoothing from the nudging near the surface, indicating that nudging an outer domain is an appropriate configuration for wind-resource modeling."
+
+Comparing daily initialisation with grid and \hl{spectral nudging} with WRF over the Baltic Sea, concluding that grid-nudging without reinitialisation is comparable to short runs with daily reinitialisation discarding the first 12h, for regions sufficiently far away from the boundaries. However, grid-nudging spatially smooths the wind filed on the outer nest and can damp variability and parallelising the frequent initialisation runs optimises the use of computational resources, making it a more appealing approach for small computational centres.
+
+\subsection{\cite{El-Samra2018}}
+
+Applied WRF to Eastern Mediterraean to see what is the best resolution to simulate complex terrain, with 9,3 and 1 km nesting
+
+Great improvement at 1 and 3 km over the 9km particularly for precipitation and temperature. 
+
+"Wind speeds, on the other hand, are generally overestimated for all model resolutions, in comparison with observational data, particularly on the coast (up to 50\%) compared to inland stations (up to 40\%). The findings therefore indicate that a 3km resolution is sufficient for the downscaling, especially that it would allow more years and scenarios to be investigated compared to the higher 1km resolution at the same computational effort."
+
+El-Samara showed WRF generally overestimates wind speed in complex terrain, more so near the coast than inland. They also show that improvements on wind speed plateau for resolutions under 3 km.
 
 
 
@@ -130,6 +159,13 @@ They found that BIAS for DADA is $1~\%$ of mean wind speed in flat terrain, reac
 
 % --------------- Section --------------- %
 \section{Marine Hindcasts}
+
+\subsection{\cite{Lewis2017}}
+
+% Title: Impactos associados À resoluÇÃo dos modelos atmosfÉricos emmodelos de prognÓsticos de ondas
+
+"Na modelagem atmosférica alguns autores compararam os resultados de simulações com diferentes resoluções espaciais e dados observados, dentre eles destacam-se \hl{Zhong et al. (2003), Mass et al. (2002) e Rife et al. (2005)}. Todos os autores concluíram que o aumento da resolução espacial apresentou resultados com erros menores. Mass et al. (2002) completa ainda que o ganho ocorreu ao diminuir o espaçamento de grade de 32 km para 12 km, mas que ao aumentar resolução de 12 km para 4 km não observou vantagens, sugerindo que a resolução ideal do modelo atmosférico para a região analisada fosse entre 10 e 15 km."
+
 
 \subsection{\cite{Menendez2014a} CD PRINTED**}
 
