@@ -22,6 +22,11 @@
 \usepackage{natbib}
 % \usepackage{biblatex} % citetitle
 
+\usepackage[toc,section=section]{glossaries}
+\makeglossaries
+\input{acronyms}
+
+
 %Title and author
 \title{My bibliography}
 \author{Rosa}
@@ -42,7 +47,7 @@
 
 "Global reanalyses suffer from inhomogeneities. However, their large-scale components are mostly homogeneous. Therefore, the concept of downscaling may be applied to homogeneously complement the large-scale state of the reanalyses with regional detail-wherever the condition of homogeneity of the description of large scales is fulfilled. Technically, this can be done by dynamical downscaling using a regional or global climate model, which's large scales are constrained by \hl{spectral nudging}
 
-"When planning for maintenance of off‐shore structures, when designing ships to withstand environmental stresses, when assessing the risk of very high storm surges (Weisse et al. 2009, 2014, 2015) or the potential of wind energy (Geyer et al. 2015; Li et al. 2016a), of the variability of regional upwelling (Tim et al., 2015), implications on permafrost thermal state, ecology and biochemical cycles through snow cover and depth (Klehmet et al. 2013), realistic descriptions of the regionally detailed weather stream for a sufficiently long time are needed. Such descriptions or analyses cannot be constructed directly from observations simply because of scarcity of observational data. “Long” time series are needed to describe the range of variations, inter‐decadal variability and change. In most cases several decades of data will be needed for such assessments. Another condition for such analyses is that they are homogeneous, i.e., changes across time and space are related to variability in weather patterns and frequencies, and not due to changing instrumentation, time of recording, built and natural environment etc. (e.g., Karl et al. 1993). Using a “frozen” reanalysis model for guiding the analysis is insufficient for guaranteeing homogeneity when the data base is changing in time and space. The latter problem is likely unavoidable."
+"When planning for maintenance of off‐shore structures, when designing ships to withstand environmental stresses, when assessing the risk of very high storm surges (Weisse et al. 2009, 2014, 2015) or the potential of wind energy (Geyer et al. 2015; Li et al. 2016a), of the variability of regional upwelling (Tim et al., 2015), implications on permafrost thermal state, ecology and biochemical cycles through snow cover and depth (Klehmet et al. 2013), realistic descriptions of the regionally detailed weather stream for a sufficiently long time are needed. Such descriptions or analyses cannot be constructed directly from observations simply because of scarcity of observational data. "Long" time series are needed to describe the range of variations, inter‐decadal variability and change. In most cases several decades of data will be needed for such assessments. Another condition for such analyses is that they are homogeneous, i.e., changes across time and space are related to variability in weather patterns and frequencies, and not due to changing instrumentation, time of recording, built and natural environment etc. (e.g., Karl et al. 1993). Using a “frozen” reanalysis model for guiding the analysis is insufficient for guaranteeing homogeneity when the data base is changing in time and space. The latter problem is likely unavoidable."
 
 \subsection{\cite{Zagar2006}}
 
@@ -70,13 +75,14 @@ They cite examples of hindcasts focusing on wind:
 \begin{itemize}
     \item \cite{Jimenez2010}, 
     \item \cite{Garcia-Diez2015}
-    \item \cite{Menendez2014a}
+    \item \cite{Menendez2014}
     \item \cite{Lorente-Plazas2015}
     \item ...
 \end{itemize}
+
 They tested 8 different sensitivity studies for several storm events in Switzerland, varying  \gls{PBL} parametrizations, nudging techniques and horizontal resolutions.
 
-They found WRF systematically overestimates wind speed compared to observations, particularly on coarser domains and for maximum wind speed. This problem is greatly reduced in areas of complex terrain by using the \hl{YSU* scheme which accounts for unresolved topography} - \cite{Jimenez2012}. 
+They found WRF systematically overestimates wind speed compared to observations, particularly on coarser domains and for maximum wind speed. This problem is greatly reduced in areas of complex terrain by using the \hl{YSU* scheme which accounts for unresolved topography} - \cite{Jimenez2013}. 
 
 They have metrics for wind direction.
 
@@ -114,7 +120,7 @@ Also, they compared with station data (and buoys) because wind is a variable wit
 
 They also compared different time aggregations to account for the different frequencies of available data: instantaneous 6 hours, averaged 6 hours and daily.
 
-They ran 36~h daily (12z) simulations, with 12~h spinup, and provide references for studies that did the same and provide good results even comparing with hindcasts that used \hl{nudging} such as \cite{Menendez2014a}. "This scheme is computationally cheap but sacrifices small-scale realist from slow-varying variables such as soil moisture".  
+They ran 36~h daily (12z) simulations, with 12~h spinup, and provide references for studies that did the same and provide good results even comparing with hindcasts that used \hl{nudging} such as \cite{Menendez2014}. "This scheme is computationally cheap but sacrifices small-scale realist from slow-varying variables such as soil moisture".  
 
 It also says that 6-12h is enough spinup for atmospheric variables.
 
@@ -155,11 +161,11 @@ Found added value of RCM near coast with verification with buoy data.
 
 \subsection{\cite{Winterfeldt2011} IJC }
 
-\textit{Title: Using QuikSCAT in the addedvalue assessment of dynamically downscaled wind speed}
+\textit{Title: Using QuikSCAT in the added value assessment of dynamically downscaled wind speed}
 
 Found added value of RCM near coast with satellite measurements and RCM with 1.875 degrees resolution. 
 
-\subsection{\cite{Feser2011RegionalExamples} BAMS}
+\subsection{\cite{Feser2011} BAMS}
 
 \textit{Title: Regional Climate ModelsAdd Value to Global Model Data: A Review and Selected Examples}
 
@@ -184,7 +190,7 @@ They found that BIAS for DADA is $1~\%$ of mean wind speed in flat terrain, reac
 "Na modelagem atmosférica alguns autores compararam os resultados de simulações com diferentes resoluções espaciais e dados observados, dentre eles destacam-se \hl{Zhong et al. (2003), Mass et al. (2002) e Rife et al. (2005)}. Todos os autores concluíram que o aumento da resolução espacial apresentou resultados com erros menores. Mass et al. (2002) completa ainda que o ganho ocorreu ao diminuir o espaçamento de grade de 32 km para 12 km, mas que ao aumentar resolução de 12 km para 4 km não observou vantagens, sugerindo que a resolução ideal do modelo atmosférico para a região analisada fosse entre 10 e 15 km."
 
 
-\subsection{\cite{Menendez2014a} CD PRINTED**}
+\subsection{\cite{Menendez2014} CD PRINTED**}
 
 \textit{Title: High-resolution sea wind hindcasts over the Mediterranean area}
 
@@ -231,7 +237,7 @@ Show different verification methods (\hl{anomaly correlation})
 %------------- BIBLIO -------------%
 % \clearpage
 \bibliographystyle{chicago}
-\bibliography{mendeley_v2.bib}
+\bibliography{references.bib}
 \label{sec:references}
 % %% command                        & example result
 % %% \citet{jones90}|               & Jones et al. (1990)
