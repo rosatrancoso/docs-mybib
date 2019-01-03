@@ -121,19 +121,9 @@ where $s^2_f = (1/N) \sum (F - \overline{F})^2$ is the sample variance of the fo
 
 
 
-\subsection{Scatter Index}
-
-From \url{http://www.incois.gov.in/HYCOM/1BY12_grid/node5.html}:
-
-Scatter index is calculated by dividing RMSD with mean of the observations at each grid point and multiplying it with 100. It presents the percentage of RMS difference with respect to mean observation or it gives the percentage of expected error for the parameter.
-
-\begin{equation}
-    SI = \frac{RMSE}{\overline{O}} &
-    SI = \sqrt{ \overline{ (F-O)^2 } }
-\end{equation}
 
 
-\subsection{Skill Score}
+\subsection{Skill Scores}
 
 From \cite{Murphy1988}
 
@@ -154,7 +144,7 @@ Range: Lower bound depends on what score is being used to compute skill and what
 
 Characteristics: Implies information about the value or worth of a forecast relative to an alternative (reference) forecast. In meteorology the reference forecast is usually persistence (no change from most recent observation) or climatology. The skill score can be unstable for small sample sizes. When MSE is the score used in the above expression then the resulting statistic is called the reduction of variance.
 
-\subsection{Nash-Sutcliffe Efficiency Factor} 
+\subsubsection{Nash-Sutcliffe Efficiency Factor} 
 
 From \url{http://www.cawcr.gov.au/projects/verification/}:
 
@@ -162,9 +152,9 @@ From \url{http://www.cawcr.gov.au/projects/verification/}:
 E = 1 - \frac{ \sum_{t=1}^{T} (F_t - O_t)^2 }{ \sum_{t=1}^{T} (O_t - \overline{O})^2} = 1 - \frac{MSE}{s^2_O}
 \end{equation}
 
-where $MSE = \overline{(F-O)^2}$ and $s^2_O = \overline{ (O-\overline{O})^2 }}$ is the sample variation of observations.
+where $MSE = \overline{(F-O)^2}$ and $s^2_O = \overline{ (O-\overline{O})^2 }$ is the sample variation of observations.
 
-Commonly used in hydrology, with time series. It's the same as $SS$ using $MSE$ as accuracy measurement and the mean of observations as the reference forecast. 
+Commonly used in hydrology, with time series. It's the same as $SS$ using $MSE$ as accuracy measurement and \hl{the mean of observations as the reference forecast.}
 
 (Nash and Sutcliffe, 1970) 
 Answers the question: How well does the forecast predict the observed time series?
@@ -173,27 +163,20 @@ Range: -âˆž to 1.  Perfect score: 1.
 
 Characteristics: Frequently used to quantify the accuracy of hydrological predictions. If E=0 then the model forecast is no more accurate than the mean of the observations; if E<0 then the mean observed value is a more accurate predictor than the model. The expression is identical to that for the coefficient of determination R2 and the reduction of variance.
 
-\subsection{Decomposition of $MSE$}
+\subsubsection{Scatter Index}
 
-\cite{Murphy1988}
+From \url{http://www.incois.gov.in/HYCOM/1BY12_grid/node5.html}:
 
-\begin{equation}
-    MSE = (\overline{F} - \overline{O})^2 + s^2_f + s^2_o - 2s_{fo}
-\end{equation}
-
-where $s^2_f = (1/N) \sum (F - \overline{F})^2$ is the sample variance of the forecasts, $s^2_o = (1/N) \sum (O - \overline{O})^2$ is the sample variance of the observations,  $s_{fo} = (1/N) \sum (F - \overline{F}) (O - \overline{O})$ is the sample covariance of the forecasts and observations. 
-
-With $s_{fo} = s_f s_o r_{fo}$ where $r_{fo}$ is the sample (Pearson product moment) coefficient of correlation between forecasts and observations, $MSE$ can be further decomposed into:
+Scatter index is calculated by dividing RMSD with mean of the observations at each grid point and multiplying it with 100. It presents the percentage of RMS difference with respect to mean observation or it gives the percentage of expected error for the parameter.
 
 \begin{equation}
-    MSE = (\overline{F} - \overline{O})^2 + s^2_f + s^2_o - 2s_f s_o r_{fo}
+    SI = \frac{RMSE}{\overline{O}}
 \end{equation}
 
-\hl{to do}
+From the library (centered)
 \begin{equation}
-    MSE = BIAS^2 + ....
+    SI = {\frac { \sqrt { {\frac 1 N} { \sum_{i=1}^N {\left(\left(F_i-{\overline F}\right)-\left(O_i-{\overline O}\right)\right)^2}}} }{  \overline O} } =     \frac { \sqrt {  \overline { \left( (F_i-{\overline F})-( O_i-{\overline O}) \right)^2}}}{\overline{O}}
 \end{equation}
-
 
 
 %------------------------
@@ -205,7 +188,9 @@ With $s_{fo} = s_f s_o r_{fo}$ where $r_{fo}$ is the sample (Pearson product mom
 
 "Global reanalyses suffer from inhomogeneities. However, their large-scale components are mostly homogeneous. Therefore, the concept of downscaling may be applied to homogeneously complement the large-scale state of the reanalyses with regional detail-wherever the condition of homogeneity of the description of large scales is fulfilled. Technically, this can be done by dynamical downscaling using a regional or global climate model, which's large scales are constrained by \hl{spectral nudging}
 
-"When planning for maintenance of off‐shore structures, when designing ships to withstand environmental stresses, when assessing the risk of very high storm surges (Weisse et al. 2009, 2014, 2015) or the potential of wind energy (Geyer et al. 2015; Li et al. 2016a), of the variability of regional upwelling (Tim et al., 2015), implications on permafrost thermal state, ecology and biochemical cycles through snow cover and depth (Klehmet et al. 2013), realistic descriptions of the regionally detailed weather stream for a sufficiently long time are needed. Such descriptions or analyses cannot be constructed directly from observations simply because of scarcity of observational data. 'Long' time series are needed to describe the range of variations, inter-decadal variability and change. In most cases several decades of data will be needed for such assessments. Another condition for such analyses is that they are homogeneous, i.e., changes across time and space are related to variability in weather patterns and frequencies, and not due to changing instrumentation, time of recording, built and natural environment etc. (e.g., Karl et al. 1993). Using a 'frozen' reanalysis model for guiding the analysis is insufficient for guaranteeing homogeneity when the data base is changing in time and space. The latter problem is likely unavoidable."
+"When planning for maintenance of offshore structures, when designing ships to withstand environmental stresses, when assessing the risk of very high storm surges (Weisse et al. 2009, 2014, 2015) or the potential of wind energy (Geyer et al. 2015; Li et al. 2016a), of the variability of regional upwelling (Tim et al., 2015), implications on permafrost thermal state, ecology and biochemical cycles through snow cover and depth (Klehmet et al. 2013), realistic descriptions of the regionally detailed weather stream for a sufficiently long time are needed. 
+
+Such descriptions or analyses cannot be constructed directly from observations simply because of scarcity of observational data. "Long" time series are needed to describe the range of variations, inter-decadal variability and change. In most cases several decades of data will be needed for such assessments. Another condition for such analyses is that they are homogeneous, i.e., changes across time and space are related to variability in weather patterns and frequencies, and not due to changing instrumentation, time of recording, built and natural environment etc. (e.g., Karl et al. 1993). Using a 'frozen' reanalysis model for guiding the analysis is insufficient for guaranteeing homogeneity when the data base is changing in time and space. The latter problem is likely unavoidable."
 
 \subsection{\cite{Zagar2006}}
 
@@ -238,7 +223,7 @@ They cite examples of hindcasts focusing on wind:
     \item ...
 \end{itemize}
 
-They tested 8 different sensitivity studies for several storm events in Switzerland, varying  \gls{PBL} parametrizations, nudging techniques and horizontal resolutions.
+They tested 8 different sensitivity studies for several storm events in Switzerland, varying PBL parametrizations, nudging techniques and horizontal resolutions.
 
 They found WRF systematically overestimates wind speed compared to observations, particularly on coarser domains and for maximum wind speed. This problem is greatly reduced in areas of complex terrain by using the \hl{YSU* scheme which accounts for unresolved topography} - \cite{Jimenez2013}. 
 
@@ -360,7 +345,7 @@ daily forecast outperforms spectral technique of previous products (??)
 
 ERA interim has better estimates in terms of wind variability and hour-to-hour correspondence. 
 
-Recent studies have been comparing the performance of hindcast driven by \gls{CFSR}, ERA-40 and ERA-Intermin, with the conclusion that ERA-Intermim shows more skill and \gls{CFSR} performs worse but not significantly enough to be discarded. In fact, it could be prefered as it provides the longest period. 
+Recent studies have been comparing the performance of hindcast driven by CFSR, ERA-40 and ERA-Intermin, with the conclusion that ERA-Intermim shows more skill and CFSR performs worse but not significantly enough to be discarded. In fact, it could be prefered as it provides the longest period. 
 
 "A daily reforecast running mode represented wind variability and hour-to-hour correspondence better than simulations running freely in "climate" mode, using spectral nudging, and to a lesser extent, also better than the run using grid nudging"
 
